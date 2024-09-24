@@ -110,10 +110,10 @@ def cross_entropy_loss(y_pred, y_true):
     t = y_true.shape[0]
     return -np.sum(y_true * np.log(y_pred)) / t
 
-def gradient_descent(X_train, Y_train, X_dev, Y_dev, iterations, alpha):
+def gradient_descent(X_train, Y_train, X_dev, Y_dev, iterations, alpha, k0, k1):
     w1, b1, w2, b2, w3, b3 = params()
-    k0 = 0
-    k1 = 1
+    k0 = k0
+    k1 = k1
 
     train_losses = []
     dev_losses = []
@@ -151,4 +151,7 @@ X_train, Y_train, X_dev, Y_dev = split_data(data)
 iterations = int(input("Enter the Number of Iterations:"))
 alpha = float(input("Enter the Learning Rate (alpha):"))
 
-w1, b1, w2, b2, w3, b3, k0, k1, train_losses, dev_losses, train_accuracies, dev_accuracies = gradient_descent(X_train, Y_train, X_dev, Y_dev, iterations, alpha)
+k0 = float(input("Enter k0:"))
+k1 = float(input("Enter k1:"))
+
+w1, b1, w2, b2, w3, b3, k0, k1, train_losses, dev_losses, train_accuracies, dev_accuracies = gradient_descent(X_train, Y_train, X_dev, Y_dev, iterations, alpha, k0, k1)
