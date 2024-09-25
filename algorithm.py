@@ -24,14 +24,17 @@ def split_data(data):
     return X_train, Y_train, X_dev, Y_dev
 
 def params():
-    w1 = np.random.rand(10, 784) - 0.5
-    b1 = np.random.rand(10, 1) - 0.5
+    num_unique_labels = len(data['label'].unique())
+    m,n = data.shape
+    
+    w1 = np.random.rand(num_unique_labels, n-1) - 0.5
+    b1 = np.random.rand(num_unique_labels, 1) - 0.5
 
-    w2 = np.random.rand(10, 10) - 0.5
-    b2 = np.random.rand(10, 1) - 0.5
+    w2 = np.random.rand(num_unique_labels, num_unique_labels) - 0.5
+    b2 = np.random.rand(num_unique_labels, 1) - 0.5
 
-    w3 = np.random.rand(10, 10) - 0.5
-    b3 = np.random.rand(10, 1) - 0.5
+    w3 = np.random.rand(num_unique_labels, num_unique_labels) - 0.5
+    b3 = np.random.rand(num_unique_labels, 1) - 0.5
 
     return w1, b1, w2, b2, w3, b3
 
